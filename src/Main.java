@@ -1,13 +1,35 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+public class Main {
+    public static void main(String[] args) {
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+        System.out.println("=== TEST RECTANGLES ===");
+
+        Rectangle r1 = new Rectangle();        // default 1x1
+        Rectangle r2 = new Rectangle(4, 6);   // custom size
+
+        System.out.println(r1);
+        System.out.println("Area: " + r1.area());
+        System.out.println("Perimeter: " + r1.perimeter());
+
+        System.out.println();
+
+        System.out.println(r2);
+        System.out.println("Area: " + r2.area());
+        System.out.println("Perimeter: " + r2.perimeter());
+
+
+        System.out.println("=== TEST BOOK ===");
+
+        Book b1 = new Book("Java Basics", "John Smith", 2020);
+
+        System.out.println(b1);
+
+        System.out.println("\nBorrowing book...");
+        b1.markAsBorrowed();
+        System.out.println(b1);
+
+        System.out.println("\nReturning book...");
+        b1.markAsReturned();
+        System.out.println(b1);
     }
 }
+

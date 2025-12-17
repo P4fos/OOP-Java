@@ -1,61 +1,87 @@
-public class Rectangle {
-    private double width;
-    private double height;
+import java.time.Year;
+
+public class Book {
+
     private int id;
     private static int idGen = 1;
 
-    public Rectangle() {
-        this.width = 1.0;
-        this.height = 1.0;
+    private String title;
+    private String author;
+    private int year;
+    private boolean available;
+
+    public Book() {
         this.id = idGen++;
+        this.available = true;
     }
 
-    public Rectangle(double width, double height) {
+    public Book(String title, String author, int year) {
         this();
-        setWidth(width);
-        setHeight(height);
-    }
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(double width) {
-        if (width <= 0) {
-            throw new IllegalArgumentException("Width must be positive.");
-        }
-        this.width = width;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        if (height <= 0) {
-            throw new IllegalArgumentException("Height must be positive.");
-        }
-        this.height = height;
+        setTitle(title);
+        setAuthor(author);
+        setYear(year);
     }
 
     public int getId() {
         return id;
     }
 
-    public double area() {
-        return width * height;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public double perimeter() {
-        return 2 * (width + height);
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        if (title == null || title.trim().isEmpty())
+            throw new IllegalArgumentException("title must not be empty");
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        if (author == null || author.trim().isEmpty())
+            throw new IllegalArgumentException("author must not be empty");
+        this.author = author;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        int current = Year.now().getValue();
+        if (year < 1500 || year > current)
+            throw new IllegalArgumentException("Invalid year");
+        this.year = year;
+    }
+
+    public void markAsBorrowed() {
+        if (!available)
+            System.out.println("Book is already borrowed");
+        else
+            available = false;
+    }
+
+    public void markAsReturned() {
+        if (available)
+            System.out.println("Book is already returned");
+        else
+            available = true;
     }
 
     @Override
     public String toString() {
-        return "Rectangle { " +
-                "id=" + id +
-                ", width=" + width +
-                ", height=" + height +
-                " }";
+        return "Book{id=" + id +
+                ", title='" + title +
+                "', author='" + author +
+                "', year=" + year +
+                ", available=" + available +
+                "}";
     }
 }
