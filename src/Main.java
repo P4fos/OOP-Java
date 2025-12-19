@@ -3,8 +3,8 @@ public class Main {
 
         System.out.println("=== TEST RECTANGLES ===");
 
-        Rectangle r1 = new Rectangle();        // default 1x1
-        Rectangle r2 = new Rectangle(4, 6);   // custom size
+        Rectangle r1 = new Rectangle();        
+        Rectangle r2 = new Rectangle(4, 6);   
 
         System.out.println(r1);
         System.out.println("Area: " + r1.area());
